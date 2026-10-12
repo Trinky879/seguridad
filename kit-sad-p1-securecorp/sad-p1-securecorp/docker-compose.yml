@@ -64,6 +64,14 @@ services:
       - servidor
 
   # ✍️ Parte C: aquí va el servicio web
+  web:
+    container_name: sad-p1-web
+    build: web
+    hostname: web.securecorp.local
+    volumes:
+      - ./pki:/pki
+    networks:
+      - securecorp
 
 networks:
   securecorp:

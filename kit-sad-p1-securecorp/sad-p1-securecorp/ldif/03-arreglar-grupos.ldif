@@ -1,0 +1,18 @@
+dn: cn=rrhh,ou=groups,dc=securecorp,dc=local
+changetype: delete
+
+dn: cn=sistemas,ou=groups,dc=securecorp,dc=local
+changetype: delete
+
+dn: cn=rrhh,ou=groups,dc=securecorp,dc=local
+changetype: add
+objectClass: groupOfNames
+cn: rrhh
+member: uid=lromero,ou=people,dc=securecorp,dc=local
+member: uid=mtorres,ou=people,dc=securecorp,dc=local
+
+dn: cn=sistemas,ou=groups,dc=securecorp,dc=local
+changetype: add
+objectClass: groupOfNames
+cn: sistemas
+member: uid=afornell,ou=people,dc=securecorp,dc=local

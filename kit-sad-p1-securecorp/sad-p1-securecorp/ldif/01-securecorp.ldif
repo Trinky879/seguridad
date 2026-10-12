@@ -1,0 +1,14 @@
+dn: uid=lromero,ou=people,dc=securecorp,dc=local
+changetype: modify
+add: mail
+mail: lromero@securecorp.local
+
+dn: uid=afornell,ou=people,dc=securecorp,dc=local
+changetype: modify
+add: mail
+mail: afornell@securecorp.local
+
+dn: uid=mtorres,ou=people,dc=securecorp,dc=local
+changetype: modify
+add: mail
+mail: mtorres@securecorp.local
