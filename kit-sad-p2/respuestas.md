@@ -35,7 +35,12 @@ En el firewall (`./lab.sh fw`): `tcpdump -ni wan host 198.51.100.62 -c 6`. Mient
 (`./lab.sh comercial`) hace `curl http://172.16.10.20:8080`. Pega lo que sale en el firewall:
 
 ```text
-(pega aquí la salida de tcpdump)
+19:31:03.401296 IP 198.51.100.62.45930 > 198.51.100.254.51820: UDP, length 32
+19:31:28.488375 IP 198.51.100.62.45930 > 198.51.100.254.51820: UDP, length 32
+19:31:31.864048 IP 198.51.100.62.45930 > 198.51.100.254.51820: UDP, length 96
+19:31:31.864186 IP 198.51.100.254.51820 > 198.51.100.62.45930: UDP, length 96
+19:31:31.864262 IP 198.51.100.62.45930 > 198.51.100.254.51820: UDP, length 96
+19:31:31.864298 IP 198.51.100.62.45930 > 198.51.100.254.51820: UDP, length 176
 ```
 
 En dos líneas: ¿qué se ve por la calle y qué NO se ve?
