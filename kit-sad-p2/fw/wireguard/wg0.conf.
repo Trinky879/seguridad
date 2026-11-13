@@ -1,0 +1,9 @@
+[Interface]
+Address    = 10.66.0.1/24
+ListenPort = 51820
+PrivateKey = (pega aquí el contenido exacto de fw.key)
+
+# La enóloga
+[Peer]
+PublicKey  = (pega aquí el contenido exacto de enologa.pub)
+AllowedIPs = 10.66.0.2/32
