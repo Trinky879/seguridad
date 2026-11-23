@@ -52,7 +52,18 @@ En dos líneas: ¿qué se ve por la calle y qué NO se ve?
 Del **mismo ataque** (la inyección a la web): ¿qué ve el vigilante de la red (el IDS) y qué ve el portero de la web? ¿Por
 qué hacen falta los dos?
 
->
+**¿Qué ve Suricata?**
+Suricata es un IDS de red colocado en la interfaz `wan` del cortafuegos (antes del DNAT). Ve los paquetes de red que entran hacia la IP pública de la bodega (`198.51.100.254`), analiza cabeceras IP/TCP y patrones en el tráfico, y **solo genera alertas** (es pasivo, no bloquea el tráfico). Además, no entiende la lógica completa de la aplicación web y quedaría ciego si el ataque fuera cifrado (HTTPS) o muy ofuscado a nivel HTTP.
+
+**¿Qué ve el WAF (ModSecurity + OWASP CRS)?**
+El WAF actúa en línea en la capa de aplicación (capa 7 / HTTP). Lee e interpreta la petición web completa: la ruta (`/catas`), el método (`GET`/`POST`), las cabeceras y cada parámetro concreto (`id`, `notas`), decodificando posibles evasiones. Suma puntos de anomalía y, si se alcanza el umbral, **bloquea activamente la petición** devolviendo `403 Forbidden` antes de que llegue al servidor web.
+
+**¿Por qué hacen falta los dos?**
+Porque aplican **defensa en profundidad** cubriendo capas y vectores distintos:
+- El WAF protege específicamente la aplicación web (puerto 80) bloqueando ataques como inyecciones SQL o XSS y permitiendo excepciones precisas por página y campo, pero no ve ataques contra otros servicios ni tráfico de red (como un ping, un escaneo de puertos o fuerza bruta al SSH en el puerto 22).
+- Suricata vigila toda la red perimetral (todos los puertos y protocolos) para dar visibilidad global y detectar reconocimientos o ataques de red que nunca pasarían por el WAF.
+
+> 
 
 ## Bloque D · La nota del servidor (D0 y D4)
 
