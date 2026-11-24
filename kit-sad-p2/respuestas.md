@@ -72,5 +72,5 @@ Nota del análisis **antes** de bastionar (D0):
 >
 
 Nota **después** (D4). ¿Por qué no llega a 100? ¿Significa que el servidor sigue inseguro? Comenta un aviso que siga saliendo.
-
+No llega a 100 porque Lynis evalúa una batería genérica de controles pensada para servidores completos de producción (particiones separadas, contraseñas de arranque, módulos del kernel, herramientas extra de auditoría, etc.), muchos de los cuales no aplican a un contenedor o no son necesarios para este servicio. Un 63/100 no significa que el servidor sea inseguro: se han cerrado los vectores críticos (eliminación del usuario puerta trasera y del binario SUID, SSH sin root ni contraseñas, Fail2ban contra fuerza bruta y cabeceras de seguridad en Nginx).
 >
